@@ -1,8 +1,10 @@
-<div class="card" style="width: 18rem;">
+<div *ngIf="servicio" class="card">
   <div class="card-body">
-    <h5 class="card-title">{{ titulo }}</h5>
-    <p class="card-text">{{ descripcion }}</p>
-    <a href="#" class="card-link">Editar</a>
-    <a href="#" class="card-link">Eliminar</a>
+    <h5 class="card-title">{{ servicio.titulo }}</h5>
+    <p class="card-text">{{ servicio.descripcion }}</p>
+  </div>
+  <div class="card-footer text-muted">
+    <button (click)="editarServicio(servicio)" class="btn btn-link">Editar</button>
+    <button (click)="eliminarServicio(servicio.id)" class="btn btn-link">Eliminar</button>
   </div>
 </div>

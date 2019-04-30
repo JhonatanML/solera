@@ -1,0 +1,50 @@
+<form
+  ngNativeValidate
+  #formServicio="ngForm"
+  (ngSubmit)="submitGrabar(formServicio)"
+>
+  <div class="card card-todos">
+    <div class="card-body">
+      <h5 class="card-title">Servicio</h5>
+      <div class="form-group">
+        <label>Nombre</label>
+        <input
+          [(ngModel)]="servicio.titulo"
+          name="nombre"
+          required
+          type="text"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Descripción</label>
+        <input
+          [(ngModel)]="servicio.descripcion"
+          name="descripcion"
+          required
+          type="text"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <label>Tipo</label>
+        <select
+          [(ngModel)]="servicio.tipo"
+          [disabled]="disabled"
+          required
+          name="tipo"
+          class="form-control"
+        >
+          <option *ngFor="let option of tipos" [value]="option.tipo">{{
+            option.descripcion
+          }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-outline-success">Grabar</button>
+      &nbsp;
+      <button type="button" (click)="cancelar()" class="btn btn-outline-danger">Cancelar</button>
+    </div>
+  </div>
+</form>

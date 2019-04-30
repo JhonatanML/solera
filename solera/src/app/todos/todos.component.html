@@ -1,3 +1,15 @@
-<app-tarjeta [titulo]="Test" [descripcion]="Descripcion" [id]="1"></app-tarjeta>
-
-<h1>Todos</h1>
+<div class="row">
+  <div class="col-md-8 col-12">
+    <div class="row">
+      <div
+        class="col-md-4 col-12 card-todos"
+        *ngFor="let item of $datos | async"
+      >
+        <app-tarjeta [servicio]="item" (editar)="editar($event)" (eliminar)="eliminar($event)"></app-tarjeta>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-12">
+    <app-servicio (grabar)="grabar($event)"></app-servicio>
+  </div>
+</div>

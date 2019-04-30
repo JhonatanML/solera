@@ -1,3 +1,19 @@
-<p>
-  autos works!
-</p>
+<div class="row">
+  <div class="col-md-8 col-12">
+    <div class="row">
+      <div
+        class="col-md-4 col-12 card-todos"
+        *ngFor="let item of $datos | async; let i = index; trackBy: trackByFn"
+      >
+        <app-tarjeta
+          [servicio]="item"
+          (editar)="editar($event)"
+          (eliminar)="eliminar($event)"
+        ></app-tarjeta>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-12">
+    <app-servicio [disabled]="true" [tipo]="tipo" (grabar)="grabar($event)"></app-servicio>
+  </div>
+</div>

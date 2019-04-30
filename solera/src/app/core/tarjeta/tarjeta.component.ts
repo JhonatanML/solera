@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Servicio } from 'src/app/clases/servicio';
 
 @Component({
   selector: 'app-tarjeta',
@@ -7,13 +8,20 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TarjetaComponent implements OnInit {
 
-  @Input() id: number;
-  @Input() titulo: string;
-  @Input() descripcion: string;
+  @Input() servicio: Servicio;
+  @Output() editar: EventEmitter<Servicio> = new EventEmitter();
+  @Output() eliminar: EventEmitter<number> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  editarServicio(servicio: Servicio){
+    this.editar.emit(servicio);
+  }
+
+  eliminarServicio(id: number){
+    this.eliminar.emit(id);
+  }
 }
